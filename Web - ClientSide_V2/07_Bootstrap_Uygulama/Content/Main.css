@@ -1,0 +1,80 @@
+﻿body {
+}
+.item img{
+    width:100%;
+    height:500px !important;
+}
+.carousel-caption{
+    background-color:rgba(0,0,0,0.4);
+}
+.services .glyphicon{
+    font-size:22px;
+    border:1px solid black;
+    padding:25px;
+    border-radius:50%; /*borderleri yuvarlar*/
+    margin:20px auto;
+
+}
+.services .glyphicon:hover{
+    transition:all 500ms ease;
+    background-color:gray;
+    cursor:pointer;
+}
+.bio {
+    position:relative;/*Ne olursa olsun bu div içerisinde ol demek*/
+    background-color:#00ff21;
+    padding:85px 0;
+    margin:25px auto;
+    color:white;
+    background:url(https://static.pexels.com/photos/216727/pexels-photo-216727-large.jpeg) fixed;
+    background-size:100% 100%;
+    /*background-size:cover;*/
+   
+}
+.bio .title{
+    position:absolute;
+    z-index:999;
+    top:0;
+    left:28%;
+    border-bottom:2px solid white;
+}
+.sosyal{
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+.sosyal li{
+    display:inline-block
+}
+.sosyal a{
+    text-decoration:none;
+    color:aqua;
+}
+.sosyal li:after{
+    content:"|";
+    margin:0 10px;
+}
+.sosyal li:last-child:after{
+    content:"";
+}
+.trans{
+    transition:all 5s ease-out;
+}
+.navbar-default{
+    border:none;
+    background-color:#434c54;
+}
+.navbar{
+    border-radius:0;
+    min-height:53px;
+}
+.navbar-brand{
+    padding:0 15px;
+    margin-top:5px
+}
+.navbar-nav>li>a{ /*küçüktür işareti ile bu li altındaki a'ları hedef alır. Ama küçüktür yerine boşluk yaparsam li altındaki tüm a'ları hedef alır.*/
+    line-height:26px;
+    /*background:red;*/
+    
+}
+
