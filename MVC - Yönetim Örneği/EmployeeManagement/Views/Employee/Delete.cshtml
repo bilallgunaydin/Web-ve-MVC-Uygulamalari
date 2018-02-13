@@ -1,0 +1,27 @@
+﻿@model EmployeeManagement.EF.Entities.Employee
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">Silme İşlemi</h2>
+<div class="col-md-6 col-md-offset-3">
+    <p>
+        Aşağıdaki bilgileri verilen çalışanı silmek istediğinize emin misin?
+    </p>
+    <strong>Adı: </strong>@Html.DisplayFor(x=> x.FirstName)<br />
+    <strong>Soyadı:</strong>@Model.LastName<br />
+    <strong>Departmanı:</strong>@Model.Department.Name<br />
+    <br />
+    <br />
+    <form method="post">
+        @Html.HiddenFor(x=> x.Id)
+        <button class="btn btn-primary pull-right">Sil</button>
+    </form>
+    <form action="@Url.Action("Index")">
+        <button class="btn btn-danger pull-left">İptal</button>
+
+    </form>
+
+</div>
+

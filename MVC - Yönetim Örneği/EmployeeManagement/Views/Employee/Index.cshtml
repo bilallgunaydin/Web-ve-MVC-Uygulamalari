@@ -1,0 +1,66 @@
+﻿@model List<EmployeeManagement.Models.EmployeeListModel>
+@{
+    ViewBag.Title = "Çalışanlar Listesi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tüm Çalışanlar</h2>
+@*@if (ViewBag.ResultMessage != null)
+{
+    <div class="alert alert-success">
+    @ViewBag.ResultMessage
+
+</div>
+}*@
+@if (TempData["ResultMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["ResultMessage"]
+        @{
+    //TempData.Keep();
+    @* Keep metodu 1'den fazla tempdatayı çalıştırmamı sağlar*@
+            @*TempData.Peek("ResultMessage") bir yerde işaretlersek. Sürekli orada kalır. Bir sonraki okumaya kadar kalır.*@
+        }
+    </div>
+}
+<table class="table table-bordered">
+    <colgroup>
+        <col style="width:30%" />
+        <col style="width:30%" />
+        <col style="width:20%" />
+        <col style="width:10%" />
+        <col style="width:10%" />
+    </colgroup>
+    <thead>
+        <tr>
+            <th>Adı</th>
+            <th>Soyadı</th>
+            <th>Departman</th>
+            <th></th>
+            <th>
+                @Html.ActionLink("Yeni", "Edit", null, new { Class = "btn btn-default btn-xs" })
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var emp in Model)
+            {
+                <tr>
+                    <td>@emp.FirstName</td>
+                    <td>@emp.LastName</td>
+                    <td>@emp.DepartmentName</td>
+                    <td>
+                        @Html.ActionLink("Düzenle", "Edit", new { id = emp.Id }, new { Class = "btn btn-default btn-xs" })
+                    </td>
+                    <td>
+                        @Html.ActionLink("Sil", "Delete",null, new { id = emp.Id }, new { Class = "btn btn-default btn-xs" })
+                    </td>
+                </tr>
+            }
+
+        }
+    </tbody>
+
+</table>

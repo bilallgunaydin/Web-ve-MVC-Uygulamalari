@@ -1,0 +1,33 @@
+﻿@model EmployeeManagement.EF.Entities.Department
+@*Küçük "model" ayar yapmak için kullanılır.Büyük "Model" nesnenin kendisidir.*@
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">Delete</h2>
+
+
+<div class="col-md-6 col-md-offset-3">
+    <p>
+        Aşağıdaki bilgileri verilen departmanı silmek istediğinize emin misin?
+    </p>
+    <strong> Adı : </strong> @Html.DisplayFor(x=>x.Name)<br />
+    <strong> Açıklaması : </strong>@Model.Description<br />
+    <strong> Çalışan Sayısı : </strong>@Model.Employees.Count()<br />
+    <br />
+    <br />
+
+    @*<form action="/Department/Delete/@Model.Id" method="post">*@
+    <form method="post">
+        @Html.HiddenFor(x   => x.Id)
+        @* yukarıdaki x Modelden geliyor. *@
+        @* Form içerisinde type belirtmezsem default olarak type sumbit olur. *@
+        <button class="btn btn-primary pull-right">Sil</button>
+    </form>
+    <form action="@Url.Action("Index")">
+        <button class="btn btn-danger pull-left">İptal</button>
+    </form>
+
+</div>
+
