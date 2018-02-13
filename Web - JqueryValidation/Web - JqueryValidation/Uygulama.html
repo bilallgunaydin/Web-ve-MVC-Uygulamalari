@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+      <script src="Scripts/jquery-3.1.1.js"></script>
+    <style>
+        .form-control {
+            margin-bottom: 2%;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("button[type=button]").on("click", function () {
+                $("input[type=text]").each(function () {
+
+                    if ($(this).val() == "") {
+                        $(this).css("border","1px solid red")
+                    } else {
+                        $(this).css("border","")
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group">
+                    <input class="form-control" type="text" id="firstName" placeholder="İsim" />
+
+                    <input class="form-control" type="text" id="lastName" placeholder="Soy İsim" />
+
+                    <input class="form-control" type="text" id="mail" placeholder="Mail Adresi" />
+
+                    <input class="form-control" type="text" id="password" placeholder="Şifresi" />
+                    <button class="form-control btn btn-success" type="button" >Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
