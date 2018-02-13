@@ -1,0 +1,44 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+ 
+    <input type="text" id="CategoryID" />
+    <input type="submit" value="Kategori Getir" id="GetCategory" />
+
+    <p>Kategori Adı : <strong id="Name"></strong></p>
+    <p>Açıklama : <strong id="Description"></strong></p>
+
+
+    <script src="~/Scripts/jquery-1.8.0.js"></script>
+
+
+    <script type="text/javascript">
+        $("#GetCategory").click(function () {
+            var ID = $("#CategoryID").val();
+            $.ajax({
+                url: '/Home/GetCategory/' + ID,
+                type:'POST',
+                dataType:'json',
+                success:function(data){
+                    $("#Name").html(data.CategoryName);
+                    $("#Description").html(data.Description);
+                },
+                error: function () {
+                    alert("DATA GELMİYOR")
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
