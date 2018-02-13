@@ -1,0 +1,73 @@
+﻿<%@ Master Language="C#"
+    AutoEventWireup="true"
+    CodeBehind="Site1.master.cs"
+    Inherits="_02_WebForm_Uygulama.Site1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+     <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+
+
+    <form id="form1" runat="server">
+        <div class="container">
+             <header>
+                    <table class="navtable">
+                        <tbody>
+                            <tr class="cstr">
+                                <td class="cstd"><a href="#container1"><span class="glyphicon glyphicon glyphicon-home "><h4 class="nav">Anasayfa</h4></span></a></td>
+                                <td class="cstd"><a href="#container2"><span class="glyphicon glyphicon glyphicon-info-sign"><h4 class="nav">Hakkımızda</h4></span></a></td>
+                                <td class="cstd"><a href="#container3"><span class="glyphicon glyphicon glyphicon-envelope"><h4 class="nav">İletişim</h4></span></a></td>
+                                <td class="cstd"><a href="#container4"><span class="glyphicon glyphicon glyphicon-user"><h4 class="nav">Kayıt Ol</h4></span></a></td>
+                                <td class="cstd"><a href="#container5"><span class="glyphicon glyphicon glyphicon-tower"><h4 class="nav">İsim Gelecek</h4></span></a></td>
+                               
+                            </tr>
+                        </tbody>
+                    </table>
+                </header>
+             <div class="w3-content w3-display-container">
+                    <img class="mySlides" src="https://www.ed2go.com/common/images/1/17136/sql-programming.jpg">
+                    <img class="mySlides" src="https://udemy-images.udemy.com/course/750x422/88750_c444_7.jpg">
+                    <img class="mySlides" src="http://2.bp.blogspot.com/-RuQGcAf_3TI/UZsgIY0_fEI/AAAAAAAADz0/S9SITZdFo1o/s1600/14.jpg">
+                    <img class="mySlides" src="http://soltech.net/wp-content/uploads/2015/08/blog-entity-framework1.png">
+                    <img class="mySlides" src="http://www.agile-scrum.be/wordpress/wp-content/uploads/2014/07/Agile-Scrum-Belgium.png" />
+                    <img class="mySlides" src="http://sdtimes.com/wp-content/uploads/2014/10/Why-HTML5-31.jpg" />
+                    <img class="mySlides" src="http://i1.wp.com/www.howtoplugin.com/wp-content/uploads/2015/07/CSS-HERO-REVIEW.jpg" />
+                    <img class="mySlides" src="https://udemy-images.udemy.com/course/750x422/672274_cd11_2.jpg" />
+                    <img class="mySlides" src="https://i.ytimg.com/vi/f67PFtrldGQ/maxresdefault.jpg" />
+                    <img class="mySlides" src="http://www.thugstart.com/wp-content/uploads/2016/04/trello.jpg" />
+                    <img class="mySlides" src="https://visualstudiomagazine.com/articles/list/~/media/ECG/visualstudiomagazine/Images/introimages/0313vsm_GoussetInsideTFS.jpg" />
+                </div>
+                <a class="w3-btn-floating w3-display-left" onclick="plusDivs(-1)">&#10094;</a>
+                <a class="w3-btn-floating w3-display-right" onclick="plusDivs(1)">&#10095;</a>
+            <section>
+                <div class="row">
+                    <nav class="col-md-4">
+                       <div class="col-md-4" id="deneme" style="background-color:blue">
+
+                    </div>
+                    </nav>
+                    <div class="col-xs-12 col-sm-8 col-md-9" style="min-height: 500px">
+                        <%-- Değişiklik yapılacak Kısım --%>
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                @RenderBody()
+            </div>
+            </section>
+            <footer class="well text-center">&copy;2016 Northwind Inc All Rights Reserved</footer>
+
+        </div>
+    </form>
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_WebForms_Intro", "01_WebForms_Intro\01_WebForms_Intro.csproj", "{C25E6EAE-C7FD-422E-861A-9D81F97C7BAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_WebForm-Uygulama", "02_WebForm-Uygulama\02_WebForm-Uygulama.csproj", "{10EC22D1-C377-4185-9EFF-AFE35A4322EC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C25E6EAE-C7FD-422E-861A-9D81F97C7BAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C25E6EAE-C7FD-422E-861A-9D81F97C7BAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C25E6EAE-C7FD-422E-861A-9D81F97C7BAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C25E6EAE-C7FD-422E-861A-9D81F97C7BAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10EC22D1-C377-4185-9EFF-AFE35A4322EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10EC22D1-C377-4185-9EFF-AFE35A4322EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10EC22D1-C377-4185-9EFF-AFE35A4322EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10EC22D1-C377-4185-9EFF-AFE35A4322EC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
