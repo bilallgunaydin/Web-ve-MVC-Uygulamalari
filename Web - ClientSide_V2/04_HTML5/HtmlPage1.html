@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+
+    <style>
+        body {
+            background-image: url(/img/images.jpg);
+            background-size:cover;
+        }
+        #container {
+            background-color: aliceblue;
+            width: 80%;
+            margin-left: 10%;
+            margin-top: 5%; /**?????????*/
+            /*height:700px;*/
+            /*border:1px solid red;*/
+            background-color:rgba(255,255,255,0.6);
+            border-radius:20px;
+        }
+
+        header {
+            /*border: 1px dotted red;*/
+            height: 200px;
+            text-align: right;
+            line-height: 200px;
+            padding: 2%;
+            box-sizing: border-box;
+            background-image: url(/img/gitar.jpg);
+            background-size: 100% 100%;
+            /*border-radius: 20px;*/
+            border-radius: 20px 20px 0 0; /*solüst,sağüst,sağalt,solalt*/
+        }
+
+        nav {
+            /*border: 1px solid black;*/
+            width: 30%;
+            padding: 2%;
+            box-sizing: border-box;
+            float: left;
+        }
+
+            nav input {
+                width: 100%;
+            }
+            nav ul{
+                list-style-type:none;/*ul'deki noktaları gönderir*/
+                
+            }
+            nav ul li a{
+                text-decoration:none;/*alt çizgiler gidiyor.*/
+                color:darkred;
+            }
+            nav ul li
+            {
+                margin:10px;
+                height:20px;
+            }
+            nav ul li:hover
+            {
+                background-color:black;
+            }
+            nav ul li a:hover{/*Üzerine geldiğinde */
+                font-size:20px;
+                color:goldenrod;
+                /*background-color:azure;*/
+            }
+        content {
+            /*border: 1px solid black;*/
+            float: left;
+            width: 69%; /*calc(68% + 10px) ;*/
+            /*height:400px;*/
+        }
+
+        footer {
+            /*border: 1px solid black;*/
+            text-align: center;
+            height: 50px;
+            line-height: 50px;
+            background-color: gold;
+            border-radius: 0 0 20px 20px;/*solüst,sağüst,sağalt,solalt*/
+        }
+
+        section {
+            /*border: 1px solid black;*/
+            width: 85%;
+            float: left;
+            padding: 2%;
+            box-sizing: border-box;
+        }
+
+        aside {
+            width: 14%;
+            float: left;
+            text-align: center;
+            box-sizing: border-box;
+            background-color: goldenrod;
+            margin-top: 5%;
+            /*border-radius: 20px;*/ /*Elementin köşelerini yuvarlar*/
+            border-radius: 0 0 20px 20px; /*solüst,sağüst,sağalt,solalt*/
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+
+        <header>
+
+            Mehmet Avcı'nın Kişisel Web Sitesi
+        </header>
+        <nav>
+            <input type="text" name="name" value="" placeholder="Aranacak Kelime" />
+            <input type="submit" name="name" value="Ara" />
+            <ul>
+                <li><a href="#">Ana Sayfa</a></li>
+                <li><a href="#">Hakkımda</a></li>
+                <li><a href="#">Projelerim</a></li>
+                <li><a href="#">İletişim</a></li>
+            </ul>
+        </nav>
+        <content>
+            <section>
+                <article>
+                    <h3>HTML 5 nedir ve Getirileri nedir?</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean imperdiet semper ornare. Donec eu pretium sapien, in condimentum risus. Donec mattis nisi eget massa condimentum consequat. Nunc ut imperdiet mauris, et ullamcorper nisi. Aenean porttitor facilisis magna, ac scelerisque mi aliquet a. Etiam enim lacus, vulputate tempor turpis sit amet, sodales suscipit turpis. Cras posuere sed odio ac tincidunt. Suspen
+                    </p>
+                </article>
+                <article>
+                    <h3>HTML 5 nedir ve Getirileri nedir?</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean imperdiet semper ornare. Donec eu pretium sapien, in condimentum risus. Donec mattis nisi eget massa condimentum consequat. Nunc ut imperdiet mauris, et ullamcorper nisi. Aenean porttitor facilisis magna, ac scelerisque mi aliquet a. Etiam enim lacus, vulputate tempor turpis sit amet, sodales suscipit turpis. Cras posuere sed odio ac tincidunt. Suspendisse nec sem id orci bibendum tincidunt ut quis nunc. Integer a nulla sit amet sapien rutrum molestie. Suspendisse scelerisque tristique pharetra. Pellentesque sit amet enim at dolor congue
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean imperdiet semper ornare. Donec eu pretium sapien, in condimentum risus. Donec mattis nisi eget massa condimentum consequat. Nunc ut imperdiet mauris, et ullamcorper nisi. Aenean porttitor facilisis magna, ac scelerisque mi aliquet a. Etiam enim lacus, vulputate tempor turpis sit amet, sodales suscipit turpis. Cras posuere sed odio ac tincidunt. Suspendisse nec sem id orci bibendum tincidunt ut quis nunc. Integer a nulla sit amet sapien rutrum molestie. Suspendisse scelerisque tristique pharetra. Pellentesque sit amet enim at dolor congue
+                    </p>
+                </article>
+            </section>
+            <aside>
+                <h3>M</h3>
+                <h3>E</h3>
+                <h3>H</h3>
+                <h3>M</h3>
+                <h3>E</h3>
+                <h3>T</h3>
+            </aside>
+            <div style="clear:both"></div>
+        </content>
+        <div style="clear:both"></div>
+        <footer>
+            &copy;2016 Mehmet Avcı
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>İlk CSS Sayfam</title>
+
+
+    <link href="http://localhost:13516/Site.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- CSS:Cascading Style Sheets -->
+    <!--
+        Css Kodları 3 farklı yere yazılır:
+        1.Elementlerin içerisine attribute olarak yazılabilir.(Inline style)
+        2.Style elementinin içerisinde yazılabilir.
+        3.Harici bir CSS belgesine yazılabilir.
+    -->
+    <!--
+        Stil nasıl yazılır:
+        property-name:value;
+    -->
+    <!--
+        Background-color:arka plan rengi için kullanılır.
+        Height:Yükseklik değeri
+        Width:Genişlik değeri
+        Margin:Elementin dışındaki boşluğu belirtisiz.
+        Paddign:Elementin içindeki boşluğu belirtiriz.
+        Border:Elementein sınır çizgilerini belirtiriz.
+        Font-Size:Yazı boyutunu pixel cinsinden veririz.
+         -->
+    <div id="container">
+        <div id="header" style="background-color:gray; height:100px;">
+            <!-- 1)Inline Style -->
+            HEADER
+        </div>
+        <div id="nav">
+            <!-- Navigation -->
+            <ul>
+                <li><a href="#">Anasayfa</a></li>
+                <li><a href="#">Hakkımızda</a></li>
+                <li><a href="#">Ürünlerimiz</a></li>
+                <li><a href="#">İletişim</a></li>
+            </ul>
+        </div>
+        <div id="section">
+            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum purus velit, molestie sed lorem vel, sollicitudin sodales nisi. Nulla sit amet suscipit arcu. Praesent quis felis dignissim massa interdum aliquet. Quisque blandit purus sed turpis elementum, efficitur ornare metus luctus.</p>
+
+            <p> Nunc elit metus, luctus id gravida nec, luctus vel turpis. Sed imperdiet, orci et efficitur gravida, ante tellus luctus sapien, eu efficitur diam massa a erat. Curabitur massa erat, fermentum in bibendum vel, ultricies eu mauris. Lorem ipsum dolor sit amet, consectetur adipiscing Cras ac placerat eros. Sed pretium vestibulum arcu.</p>
+
+
+        </div>
+        <div style="clear:both"></div>
+        <div id="footer">
+            &copy;2016 V-Class Project Developer Team
+        </div>
+    </div>
+</body>
+</html>

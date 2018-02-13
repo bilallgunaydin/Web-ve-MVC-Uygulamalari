@@ -1,0 +1,26 @@
+﻿body {
+}
+header{
+    background-image:url(/img/headerİmage.jpg);
+    height:100px;
+    text-align:right;
+}
+#container
+{
+    height:500px;
+    width:1010px;
+    background-color:gold;
+}
+nav div{
+    float:left;
+    height:100px;
+    width:210px;
+    margin-left:20px;
+    color: #FFF;
+}
+footer{
+    height:50px;
+    text-align:center;
+    line-height:50px;
+    border-radius:0,20px,20px,0;
+}

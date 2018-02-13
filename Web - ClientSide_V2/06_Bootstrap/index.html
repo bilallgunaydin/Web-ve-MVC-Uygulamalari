@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Bootstrap Intro</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <style>
+        .row{
+            border:1px solid white;
+            margin-bottom:15px;
+        }
+        .row > div{
+            border:1px solid blue;
+            height:150px;
+            background:pink;
+        }
+        .solMenu{
+            height:400px !important ;
+        }
+        .sagIcerik {
+            height: 400px !important;
+        }
+        .ortak{
+            background-color:aqua !important;
+        }
+
+    </style>
+</head>
+<body>
+    <!--<div class="container-fluid">
+        ...
+    </div>-->
+    <!--<div class="container">
+        <div class="row">
+            <div class="col-md-1 col-sm-6">.col-md-1</div>
+            <div class="col-md-1 col-sm-6">.col-md-1</div>
+            <div class="col-md-1 col-sm-6">.col-md-1</div>
+            <div class="col-md-1 col-sm-6">.col-md-1</div>
+            <div class="col-md-1 col-sm-6">.col-md-1</div>
+            <div class="col-md-1 col-sm-6">.col-md-1</div>
+            <div class="col-md-1 col-sm-6">.col-md-1</div>
+            <div class="col-md-1 col-sm-6">.col-md-1</div>
+            <div class="col-md-1 col-sm-6">.col-md-1</div>
+            <div class="col-md-1 col-sm-6">.col-md-1</div>
+            <div class="col-md-1 col-sm-6">.col-md-1</div>
+            <div class="col-md-1 col-sm-6">.col-md-1</div>
+            <div class="col-md-1 col-sm-6">.col-md-1</div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">.col-md-8</div>
+            <div class="col-md-4">.col-md-4</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">.col-md-4</div>
+            <div class="col-md-4">.col-md-4</div>
+            <div class="col-md-4">.col-md-4</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">.col-md-6</div>
+            <div class="col-md-6">.col-md-6</div>
+        </div>
+    </div>-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md12">
+                <h2>HEADER</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 solMenu ortak">
+                NAVBAR
+            </div>
+            <div class="col-md-8 sagIcerik ortak">
+                <div class="row">
+                    <div class="col-md-4">1</div>
+                    <div class="col-md-4">2</div>
+                    <div class="col-md-4">3</div>
+                </div>
+                SECTION
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h2>FOOTER</h2>
+            </div>
+        </div>
+    </div>
+
+    <script src="Scripts/jquery-1.9.1.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+</body>
+</html>
