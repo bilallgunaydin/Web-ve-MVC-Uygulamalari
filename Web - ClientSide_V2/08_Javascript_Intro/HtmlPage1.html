@@ -1,0 +1,359 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+    <script>
+        /*JavaScript yazmak için script yazılır.*/
+        //Tek satır yorum
+        /*
+            Çok satır yorum
+        */
+
+        /*
+        JAVASCRİPT
+        1-Inline(element içi)
+        2-Script tag'ları arasına
+        3-Harici bir .js dosya ile
+        */
+
+        //alert('deneme');
+
+        //Primitive Types
+        /*
+        
+        1-boolean
+        2-number
+        3-string
+        4-undefined
+        (5-object)
+        */
+
+        //Instance Types
+
+        /*
+        
+        1-Object
+        a-Boolean
+        b-Number
+        c-String
+        d-Array
+        e-Date  
+        -------
+        f-Person//Benim açtığım class'lar
+        g-Category
+        
+        */
+
+
+        //HTMLElement < Element < Node < EventTarget < Object
+        //Değişken Tanımlama
+
+        //var isim = "Serkan"//Sonuna noktalı virgül koyma zorunluluğu yoktur.
+        //var sayi = 5;
+        //var yazıOlarakSayı = "123"
+        //var durum = true;
+        //var ondalıklı = 1.25
+        //var degisken;
+
+        //alert(isim + sayi);                        /serkan5
+        //alert(ondalıklı + sayi);                  //6.25
+        //alert(sayi+yazıOlarakSayı)                //5323
+        //alert(sayi + sayi + yazıOlarakSayı);      //10323
+        //alert(sayi + (sayi + yazıOlarakSayı))     //55323
+        //alert(yazıOlarakSayı+ sayi+sayi)            //32355
+        //garipSey = 12 // başına var değişken tipini yazmadan kullanabilirim. Arka planda tanımlanır. Tanımlanmış gibi davranır.
+        //alert(garipSey)
+
+        //function test() {
+        //    var deneme = 55;
+        //    garipsey = 12
+        //}
+
+        /*
+        C#'da olan
+        var anonimus = new {Firstname="Bişey",LastName="Başka Şey"};
+
+        // a' anonymous type
+
+        aonimus.FirstName="Deneme"
+        */
+
+        //var name = new String("Aydın")
+        //var number = new Number(150)
+        //var date = new Date('03.11.2016')
+        //var state = new Boolean(false)
+        //var state2 = false;
+        //var bildik = "deneme"
+        //var bildik2;
+
+
+        //KARAR YAPILARI(if-else)
+
+
+        //alert(state)
+        //alert(state2)
+        //if (state == false) {             //Koşul yanlış
+        //if(state2){                       //Koşul yanlış
+        //if(state){                          //Koşul Doğru
+        //    alert("Koşul doğru")
+
+        //}
+        //else {
+        //    alert("Koşul yanlış")
+        //}
+        //alert(bildik2)
+        //if(bildik)
+        //if (bildik2) {
+        //    alert("Doğru")
+        //}
+        //else {
+        //    alert("Yanlış")
+        //}
+
+        //var sayi = 5
+        //var sayi2 = 9
+        //var sayi3 = "5"
+        //var sayi4 = "22"
+
+        //if (sayi == sayi2) { // Yanlış
+        //if(sayi==sayi3){       //DOĞRU
+        //if(sayi==sayi4){       //Yanlış
+        //if(sayi===sayi3){       //YANLIŞ  3 eşittirle içeride değer tipleri kıyaslar
+        //if(sayi!==sayi3){         doğru
+        //    alert("doğru")
+        //}
+        //else {
+        //    alert("yanlış")
+        //}
+
+        //SWITCH CASE
+
+        //var day = 2
+        //switch (day) {
+        //    case 1:
+        //        alert("P.tesi")
+        //        break;
+        //    case 2:
+        //        alert("Salı")
+        //        break
+        //    case 3:
+        //        alert("Çarşamba")
+        //        break
+        //    case 4:
+        //        alert("Perşembe")
+        //        break
+        //    case 5:
+        //        alert("Cuma")
+        //        break
+        //    case 6:
+        //        alert("C.tesi")
+        //        break
+        //    case 7:
+        //        alert("Pazar")
+        //        break
+
+        //    default:
+        //        alert("yanlış")
+
+        //}
+
+
+        //DÖNGÜLER
+
+        //var sayi = 5
+        //while (sayi < 10) {
+        //    alert(sayi)
+        //    sayi++
+        //}
+
+
+        //var sayi = 5
+        //while (sayi) {
+        //    alert(sayi)
+        //    sayi++
+        //    if (sayi == 10) {
+        //        sayi = undefined// undefined tanımsız demektir. NULL veya undefined değerini kontrol ediyor
+        //        sayi=null
+        //    }
+        //}
+        //alert("Döngü bitti")
+
+        //for (var i = 0; i < 6; i++) {
+        //    alert(i)
+
+        //}
+        //for (var i = 4; i; i--) {
+        //    alert(i)
+        //}
+        //for (var i = 4; i; i--) {
+        //    alert(i)
+        //    if (i == 2) {
+        //        i=""
+        //    }
+        //}
+
+        //ARRAYS
+
+        //var isimler = ["Ayça", "Fidan", "Ferhat", "Burak", "Bilal"]
+
+        ////debugger
+        //alert(isimler[2])
+
+        ////isimler[0] = "Can"
+
+        //alert(isimler[0])
+
+        //isimler[8] = "Mehmet" /*Dil esnek olduğu için genişleyebilir. Aradaki atanmayan değerler undefined olarak atanır.*/
+        //alert(isimler[8])
+
+        //FORIN
+        //for (var i in isimler) {
+        //    //alert(i)
+        //    alert(isimler[i])
+        //}
+
+        //ARRAY METHODs
+
+        //alert(isimler.toString())
+
+        //var dizi = ["asd", 23, false, 1.24]
+        //alert(isimler) // toSTring yazmazsam bile otomatik toString alır.
+        //alert(dizi.toString())
+
+        //alert(isimler.join("-"))
+
+
+        ////LIFO
+        ////(bkz : C# - Stack( can be generic)
+        //alert(isimler.length)
+        //var çıkarılan = isimler.pop()
+        //alert(çıkarılan)//pop son elemanı çıkartır.
+        //alert(isimler.length)
+
+        //isimler.push("Can")
+        //alert(isimler)
+
+        ////FIFO
+        //////
+        ////(bkz: C# - Queue( can be generic))
+        //var kayanKisi = isimler.shift()//shift baştaki elemanı çıkarır.
+        //alert(kayanKisi)
+        //alert(isimler)
+        //isimler.unshift("Mehmet")//unsift başa eleman ekler.
+        //alert(isimler)
+
+        //var cumle = "Bugün hava çok güzel"
+        //var index = cumle.indexOf("a")
+        ////alert(index)
+        ////alert(cumle.lastIndexOf("a"))
+        //alert(cumle.indexOf("hava")) // deyince hava'nın ilk harfini bulduğu yerin index'ini verir. Ama komple kelimeyi bulmalı.
+
+        /*
+            ÖDEV
+            lastIndexOf+
+            search+
+            slice+
+            replace+
+            substring+
+            substr+
+            toUpperCase+
+            toLowerCase+
+            concat+
+            charAt+
+            split
+
+            Date.parse("March 22, 2016")
+        */
+
+        //Convensions (dönüşümler)
+
+        //var sayı = 124123
+        //var metin = sayı.toString()
+        //var tamSayı = parseInt("123")
+        //var ondalıklıSayı = parseFloat("123.44")
+
+        var a = "Yazılım mutfağı"
+        //document.writeln(a.lastIndexOf("z"))
+        //document.writeln(a.lastIndexOf("m"))
+        //document.writeln(a.lastIndexOf("ı"))
+        //document.writeln(a.indexOf("a", 3))
+        //document.writeln(a.indexOf("ı", 3))
+        //document.writeln(a.charAt(8))
+        //document.writeln(a.charAt(3))
+        //document.writeln(a.charAt(5))
+        //var temp = new Array()
+        //temp = a.split('a', 2)
+        //temp=a.split(2,4)
+        //document.writeln(temp)
+        //document.writeln(a.search("ı"))
+        //document.writeln(a.search("m"))
+        //document.writeln(a.search("u"))
+        //document.writeln(a.slice(3, 5))
+        //document.writeln(a.slice(3, 4))
+        //document.writeln(a.slice(4, 5))
+        //document.writeln(a.slice(0,4))
+        //var b = a.replace(a, "asd")
+        //var c=a.replace("mahmut","asd")
+        //document.writeln(c)
+        //var str = a.replace("mutfağı", "banyosu")
+        //document.writeln(str)
+        var str = "Hello world"
+        //document.writeln(str.substring(0, 7))
+        //document.writeln(str.substring(3,6))
+        //document.writeln(str.substring(6,10))
+        //document.writeln(str.substring(1, 4))
+        //document.writeln(str.substr(1, 4))
+        //document.writeln(str.substring(4, 5))
+        //document.writeln(str.substr(4, 5))
+        //document.writeln(str.substring(1, 3))
+        //document.writeln(str.substr(1,3))
+        //document.writeln(str.toUpperCase())
+        //document.writeln(str.substring(1, 11).toUpperCase())
+        //document.writeln(str.charAt(4).toUpperCase())
+        //document.writeln(str.slice(1,3).toUpperCase())
+        //document.writeln(str.toLowerCase())
+        //document.writeln(str.substring(1,4).toLowerCase())
+        //document.writeln(str.charAt(4).toLowerCase())
+        //document.writeln(str.slice(1,4).toLowerCase())
+        //var hege = ["Cecilie", "Lone"];
+        //var stale = ["Emil", "Tobias", "Linus"];
+        //var children = hege.concat(stale);
+        //document.writeln(children)
+        //var dizi = [1, 4, 5]
+        //var dizi2 = [2, 3]
+        //var dizi3 = dizi2.concat(dizi)
+        //document.writeln(dizi3)
+        //var karakter = ["a", "b"]
+        //var karakter2 = ["c4"]
+        //var karakterler = karakter2.concat(karakter)
+        //document.writeln(karakterler)
+        //var str = "How are you doing today?";
+        //var res = str.split("How");
+        //document.writeln(res)
+        //var res = str.split("today");
+        //document.writeln(res)
+        //var res = str.split("you");
+        ////document.writeln(res)
+        //var d = Date.parse("March 21, 2012");/*1 ocak 1970 ile 21 mart 2012 arasındaki zaman farkını milisaniye olarak verir.*/
+        //document.writeln(d)
+
+
+
+
+    </script>
+    <script>
+        //alert("boo")
+        //alert(sayi)
+        //test()
+        //debugger;
+        //alert(deneme)
+        //alert(garipSey)
+
+    </script>
+    <!--<button onclick="alert('Element içine yazdığım ilk JS kodu')">Tıkla Beni</button>
+    <input type="button" value="Tıkla Beni" onclick="alert('İnput element onclick')" />-->
+</body>
+</html>

@@ -1,0 +1,267 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <style>
+        article {
+            padding: 2%;
+            box-sizing: border-box; /*Border'ı kutunun yüksekliğine, genişliğine dahil eder.*/
+        }
+        article form input{
+            margin-bottom: 2%;
+        }
+        article button{
+            margin-top:2%;
+        }
+    </style>
+</head>
+<body onload="GetPeopleFromLocalStorage()">
+    <div class="container">
+        <header class="row">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <!--<a class="navbar-brand" href="#">Brand</a>-->
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="index.html">Person Management</a></li>
+                            <!-- 
+                                Person : 
+                                    Id
+                                    FirstName
+                                    LastName
+                                    Phones
+                                    + Department
+                                 -->
+
+                            <li><a href="department.html">Department Managment</a></li>
+                            <!-- 
+                                + Department :
+                                    + Id
+                                    + Name
+                                    + Description
+                                 -->
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </header>
+
+        <section class="row">
+            <article class="col-md-5">
+                <form>
+                    <input class="form-control" type="text" name="departmenName" id="departmanName" value="" placeholder="Departman İsmi"/>
+                    <textarea class="form-control" name="descriptionName" id="descriptionName" placeholder="İş açıklaması"></textarea>
+                    <button class="btn btn-success" onclick="SaveDepartman(event)">Save</button>
+                </form>
+
+                
+            </article>
+
+            <aside class="col-md-7">
+                <table id="departman-list" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>#</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </aside>
+        </section>
+    </div>
+
+
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/jquery-1.9.1.js"></script>
+    <script>
+        var currentDepartmanId = 1
+
+        var departman = function () {
+            this.id = 0
+            this.name = ""
+            this.description = ""
+        }
+
+        var departmanlist = []
+
+        function SaveDepartman(event) {
+
+            event.preventDefault()
+            var newDepartman
+            var isUpdate = false
+
+            if (event.target.getAttribute("data-departmanId")) {
+
+                for (var i = 0; i < departmanlist.length; i++) {
+                    if (departmanlist[i].Id == event.target.getAttribute("data-departmanId")) {
+                        newDepartman = departmanlist[i]
+                        isUpdate = true
+                        break
+
+                    }
+
+                }
+            }
+            else {
+
+                newDepartman = new departman()
+                newDepartman.id = currentDepartmanId++
+
+            }
+
+            newDepartman.name = document.getElementById("departmanName").value
+            newDepartman.description = document.getElementById("descriptionName").value
+
+            
+
+            if (!isUpdate) {
+                departmanlist.push(newDepartman)
+                ClearForm()
+            }
+            else {
+                ClearForm(document.querySelector("form .btn-danger"))
+            }
+
+
+            RefreshList();
+
+            SavePeopleToLocalStorage()
+        }
+
+        function ClearForm(cancelButton) {
+            document.querySelector("form input[type=text]").value = ""
+            document.querySelector("form textarea").value = ""
+
+
+            if (cancelButton) {
+                cancelButton.remove()
+
+            }
+            document.querySelector("form button").textContent = "Save"
+            document.querySelector("form button").removeAttribute("data-departmanId")
+        }
+
+        function RefreshList() {
+            var table = document.getElementById("departman-list")
+            table.tBodies[0].innerHTML = ""
+
+            for (var i = 0; i < departmanlist.length; i++) {
+
+                var tr = document.createElement("tr")
+
+                var tdName = document.createElement("td")
+                tdName.textContent = departmanlist[i].name
+                tr.appendChild(tdName)
+
+                var tdDescription = document.createElement("td")
+                tdDescription.textContent = departmanlist[i].description
+                tr.appendChild(tdDescription)
+
+
+                var tdOther = document.createElement("td")
+                tdOther.innerHTML = "<a href='#' onclick='FillForm({DEPARTMANTID}, event)'>Update</a> | <a href='#' onclick='RemovePerson({DEPARTMANTID}, event)' >Remove</a>"
+                .replace("{DEPARTMANTID}", departmanlist[i].Id)
+                .replace("{DEPARTMANTID}", departmanlist[i].Id)
+
+                tr.appendChild(tdOther)
+
+                table.tBodies[0].appendChild(tr)
+
+
+            }
+        }
+
+        function FillForm(id, event) {
+            ClearForm()
+            event.preventDefault();
+
+            var department
+
+            for (var i = 0; i < departmanlist.length; i++) {
+                if (departmanlist[i] == id) {
+                    department = departmanlist[i]
+                    break
+                }
+
+            }
+
+            document.getElementById("departmanName").value = department.name
+            document.getElementById("descriptionName").value = department.description
+
+
+            var saveButton = document.querySelector("form button")
+            saveButton.textContent = "Update"
+
+            var cancelButton = document.createElement("button")
+            cancelButton.className = "btn btn-danger"
+            cancelButton.textContent = "Cancel"
+            cancelButton.addEventListener("click", function () {
+                ClearForm(this)
+            })
+
+            if (document.querySelectorAll("form button").length < 2) {
+                saveButton.after(cancelButton)
+
+            }
+
+            saveButton.setAttribute("data-departmanId", department.Id.toString())
+        }
+
+        function RemovePerson(id, event) {
+
+            event.preventDefault();
+            var result = confirm("Are you sure about killing this guys information? :/")
+
+            if (result) {
+                for (var i = 0; i < departmanlist.length; i++) {
+
+                    if (departmanlist[i].Id == id) {
+                        departmanlist.splice(i, 1)
+                        break
+
+                    }
+
+                }
+            }
+
+            RefreshList()
+
+            SavePeopleToLocalStorage()
+
+        }
+
+        function SavePeopleToLocalStorage() {
+            localStorage.setItem("currentDepartmanId", currentDepartmanId)
+            localStorage.setItem("departmanlist", JSON.stringify(departmanlist))
+
+
+        }
+
+        function GetPeopleFromLocalStorage() {
+            if (localStorage.getItem("departmanlist")) {
+                var stringJSON = localStorage.getItem("departmanlist")
+                departmanlist = JSON.parse(stringJSON)
+            }
+
+            if (localStorage.getItem("currentDepartmanId")) {
+                currentPersonId = parseInt(localStorage.getItem("currentDepartmanId"))
+            }
+
+            RefreshList();
+        }
+    </script>
+</body>
+</html>

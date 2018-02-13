@@ -1,0 +1,365 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <style>
+        article {
+            padding: 2%;
+            box-sizing: border-box; /*Border'ı kutunun yüksekliğine, genişliğine dahil eder.*/
+        }
+
+            article form input {
+                margin-top: 2%;
+            }
+
+            article form button {
+                margin-top: 2%;
+            }
+    </style>
+
+</head>
+<body onload="GetPeopleFromLocalStorage()">
+
+    <div class="container">
+        <header class="row">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <!--<a class="navbar-brand" href="#">Brand</a>-->
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="index.html">Person Management</a></li>
+                            <!-- 
+                                Person : 
+                                    Id
+                                    FirstName
+                                    LastName
+                                    Phones
+                                    + Department
+                                 -->
+
+                            <li><a href="department.html">Department Managment</a></li>
+                            <!-- 
+                                + Department :
+                                    + Id
+                                    + Name
+                                    + Description
+                                 -->
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </header>
+
+        <section class="row">
+
+            <article class="col-md-5">
+                <form>
+                    <input class="form-control " type="text" name="firstName" id="firstName" value="" placeholder="Name..." />
+
+                    <input class="form-control" type="text" name="lastName" id="lastName" value="" placeholder="Surname..." />
+                    <select class="form-control">
+                        <option>asd</option>
+                    </select>
+
+                    <div id="phone-area">
+
+                        <div class="form-inline" osman="kalıcı">
+                            <input class="form-control" type="text" name="Phone" value="" placeholder="Phone..." />
+                            <input type="button" class="btn btn-success" value="+" onclick="AddPhoneBlock(this)" />
+                            <!--<input type="button" class="btn btn-warning" value="-" onclick="RemovePhoneBlock(this)"/>-->
+                        </div>
+
+                    </div>
+
+                    <button class="btn btn-success" onclick="SavePerson(event)"> Save </button>
+
+                </form>
+
+            </article>
+
+            <aside class="col-md-7">
+                <table id="people-list" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Surname</th>
+                            <th>Phone</th>
+                            <th>Department</th>
+                            <th>#</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </aside>
+        </section>
+
+    </div>
+
+
+    <script src="Scripts/jquery-1.9.1.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script>
+
+        var Person = function () {
+            this.Id = 0
+            this.FirstName = ""
+            this.LastName = ""
+            this.Phones = []
+        }
+
+        var peopleList = []
+
+        function AddPhoneBlock(sender) {
+            var newPhoneBlock = '<div class="form-inline"> <input class="form-control" type="text" name="Phone" value="" placeholder="Phone..." /> <input type="button" class="btn btn-success" value="+" onclick="AddPhoneBlock(this)"/> <input type="button" class="btn btn-warning" value="-" onclick="RemovePhoneBlock(this)"/></div>'
+
+            var phoneArea = document.getElementById("phone-area")
+
+            //1. Yöntem
+            //a
+            //phoneArea.innerHTML += newPhoneBlock
+            //b
+            //sender.parentElement.parentElement.innerHTML += newPhoneBlock
+
+            //2. Yöntem
+            //sender.parentElement.outerHTML += newPhoneBlock
+
+            //3. Yöntem
+            var yeniElement = document.createElement("div")
+            yeniElement.innerHTML = '<input class="form-control" type="text" name="Phone" value="" placeholder="Phone..." /> <input type="button" class="btn btn-success" value="+" onclick="AddPhoneBlock(this)"/> <input type="button" class="btn btn-warning" value="-" onclick="RemovePhoneBlock(this)"/>'
+            yeniElement.className = "form-inline"
+
+            sender.parentElement.parentElement.appendChild(yeniElement)/*appendChild: Çocuk ekledik. Phone area class'ının içindeki form-inline class'ına çocuk ekledik.*/
+        }
+
+        function RemovePhoneBlock(sender) {
+            sender.parentElement.outerHTML = ""
+        }
+
+        function SavePerson(event) {
+
+
+            //http://stackoverflow.com/questions/1357118/event-preventdefault-vs-return-false
+            //Button elementi submit ise, varsayılan olarak click eventi form içerisindeki inputların değerlerini server'a gönderdiğinden sayfa yenilenir. Bu sebeple submite atanmış bir fonksiyon çalışmaz. Submitin varsayılan bu davranışını engellemek için aşağıdaki kodu yazdık.
+            event.preventDefault();
+            //event.stopPropagation() //ebeveyn elemanlara köpüren tıklama olayını durdurmak
+
+            var newPerson
+            var isUpdate = false;
+
+            if (event.target.getAttribute("data-personId")) {
+                //data-personId'de değer varsa if kontrolünden geçer ve GÜNCELLEME işlemi yapılması gerekiyor demektir.
+                for (var i = 0; i < peopleList.length; i++) {
+                    if (peopleList[i].Id == event.target.getAttribute("data-personId")) {
+                        newPerson = peopleList[i];
+                        isUpdate = true;
+                        break;
+                    }
+                }
+            }
+            else {
+                //data-personId diye bir attribute yoksa ya da değeri null ise buraya düşer ve YENİ KAYIT işlemi yapılacak demektir.
+                newPerson = new Person();
+                newPerson.Id = currentPersonId++;
+            }
+
+
+
+            newPerson.FirstName = document.getElementById("firstName").value
+
+            newPerson.LastName = document.getElementById("lastName").value
+
+            //querySelector func returns first element of selector text
+            //(querySelector fonksiyonu selector tanımına uyan ilk elementi döndürür)
+            //var phoneInputs = document.querySelector("form input[name=phone]")
+
+            //querySelector func returns all elements of selector text
+            //(querySelector fonksiyonu selector tanımına uyan bütün elementleri döndürür)
+            var phoneInputs = document.querySelectorAll("form input[name=Phone]")
+            newPerson.Phones = []
+            for (var i = 0; i < phoneInputs.length; i++) {
+                newPerson.Phones.push(phoneInputs[i].value)
+            }
+
+            if (!isUpdate) {
+                peopleList.push(newPerson)
+                ClearForm()
+            }
+            else {
+                //event.target.removeAttribute("data-personId")
+                ClearForm(document.querySelector("form .btn-danger"))
+            }
+
+
+
+            RefreshList();
+
+            SavePeopleToLocalStorage()
+        }
+
+        function ClearForm(cancelButton) {
+            //Form içerisindeki inputları temizleyecek
+
+            var formInputs = document.querySelectorAll("form input[type=text]")
+            for (var i = 0; i < formInputs.length; i++) {
+                formInputs[i].value = ""
+            }
+
+            var phoneBlocks = document.querySelectorAll("form .form-inline")
+            for (var i = 0; i < phoneBlocks.length; i++) {
+                if (phoneBlocks[i].getAttribute("osman") != "kalıcı") {
+                    phoneBlocks[i].remove()
+                }
+            }
+
+            if (cancelButton) {
+                cancelButton.remove()
+            }
+
+            document.querySelector("form button").textContent = "Save"
+            document.querySelector("form button").removeAttribute("data-personId")
+        }
+
+        function RefreshList() {
+            //Tablonun içerisindeki kişi datalarını tekrar yükleyecek
+
+
+            var table = document.getElementById("people-list")
+            table.tBodies[0].innerHTML = ""
+
+            for (var i = 0; i < peopleList.length; i++) {
+
+                var tr = document.createElement("tr")
+
+                //FirstName
+                var tdName = document.createElement("td")
+                tdName.textContent = peopleList[i].FirstName
+                tr.appendChild(tdName)
+
+                //LastName
+                var tdSurname = document.createElement("td")
+                tdSurname.textContent = peopleList[i].LastName
+                tr.appendChild(tdSurname)
+
+                //Phones
+                var tdPhones = document.createElement("td")
+                for (var j = 0; j < peopleList[i].Phones.length; j++) {
+                    tdPhones.textContent += peopleList[i].Phones[j] + " | "
+                }
+                tdPhones.textContent = tdPhones.textContent.substring(0, tdPhones.textContent.length - 3)
+                tr.appendChild(tdPhones)
+
+                //# (işlemler)
+                var tdOther = document.createElement("td")
+                tdOther.innerHTML = "<a href='#' onclick='FillForm({PERSONID}, event)'>Update</a> | <a href='#' onclick='RemovePerson({PERSONID}, event)' >Remove</a>"
+                                    .replace(/{PERSONID}/gi, peopleList[i].Id)  //regex [EXTRA]
+                //.replace("{PERSONID}", peopleList[i].Id)
+                tr.appendChild(tdOther)
+
+                table.tBodies[0].appendChild(tr)
+
+            }
+
+        }
+
+        function FillForm(id, event) {
+            ClearForm()
+
+            //http://stackoverflow.com/questions/1357118/event-preventdefault-vs-return-false
+            event.preventDefault();
+
+            var person;
+            for (var i = 0; i < peopleList.length; i++) {
+                if (peopleList[i].Id == id) {
+                    person = peopleList[i]
+                    break;
+                }
+            }
+
+            document.getElementById("firstName").value = person.FirstName
+            document.getElementById("lastName").value = person.LastName
+            document.querySelector("form input[name=Phone]").value = person.Phones[0]
+            if (person.Phones.length > 1) {
+                for (var i = 1; i < person.Phones.length; i++) {
+                    var phoneArea = document.getElementById("phone-area")
+                    var phoneBlock = document.createElement("div")
+                    phoneBlock.className = "form-inline"
+                    phoneBlock.innerHTML = '<input class="form-control" type="text" name="Phone" value="{VALUE}" placeholder="Phone..." /> <input type="button" class="btn btn-success" value="+" onclick="AddPhoneBlock(this)"/> <input type="button" class="btn btn-warning" value="-" onclick="RemovePhoneBlock(this)"/>'
+                                .replace("{VALUE}", person.Phones[i])
+
+                    phoneArea.appendChild(phoneBlock)
+                }
+            }
+
+            var saveButton = document.querySelector("form button")
+            saveButton.textContent = "Update"
+
+            var cancelButton = document.createElement("button")
+            cancelButton.className = "btn btn-danger"
+            cancelButton.textContent = "Cancel"
+            cancelButton.addEventListener("click", function () {
+                ClearForm(this)        //this = cancelButton
+            })
+
+            //Birden fazla Cancel butonu eklenmesini önlemek adına bu alttaki koşulu ekledik
+            if (document.querySelectorAll("form button").length < 2) {
+                saveButton.after(cancelButton)
+            }
+
+            saveButton.setAttribute("data-personId", person.Id.toString())
+
+        }
+
+        function RemovePerson(id, event) {
+
+            event.preventDefault()
+
+            var result = confirm("Are you sure about killing this guys information? :/")
+
+            if (result) {
+                for (var i = 0; i < peopleList.length; i++) {
+                    if (peopleList[i].Id == id) {
+                        peopleList.splice(i, 1)
+                        break
+                    }
+                }
+            }
+
+            RefreshList()
+
+            SavePeopleToLocalStorage()
+        }
+
+        function SavePeopleToLocalStorage() {
+            localStorage.setItem("currentPersonId", currentPersonId)
+            localStorage.setItem("peopleList", JSON.stringify(peopleList))
+        }
+
+        function GetPeopleFromLocalStorage() {
+            if (localStorage.getItem("peopleList")) {
+                var stringJSON = localStorage.getItem("peopleList")
+                peopleList = JSON.parse(stringJSON)
+            }
+
+            if (localStorage.getItem("currentPersonId")) {
+                currentPersonId = parseInt(localStorage.getItem("currentPersonId"))
+            }
+
+            RefreshList();
+        }
+
+    </script>
+   
+</body>
+</html>

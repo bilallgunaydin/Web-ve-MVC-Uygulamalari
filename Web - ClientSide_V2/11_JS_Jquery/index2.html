@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+      <link href="benimStilim.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.1.1.js"></script>
+     <script>
+         //function test() {
+            
+         //}
+         $(document).ready(function (){
+
+             //Ready: onload eventiyle aynı mantıkla çalışır. Onload eventinden daha sağlıklı sonuç üretir.
+
+             //1.Yöntem
+             //$("input[type=button]").click(function () {
+             //    $("#kutu").hide()
+             //})
+
+             //2.Yöntem
+             //a.
+             //$("input[type=button]").on("click", function () {
+             //    $("#kutu").hide()
+             //})
+
+             //b.
+
+             $("input[type=button]").on({
+                 mouseenter: function () {
+                     $(this).css("background-color", "lime")
+                 },
+                 mouseleave: function () {
+                     $(this).css("background-color", "buttonface")
+                 }
+             })
+
+
+             $("input[type=button]:nth-child(1)").on("click",function () {
+                 //$("#kutu").slideToggle()
+                 $(".farkliKutu").slideToggle()                 
+                    
+             })
+
+             $("input[type=button]:nth-child(2)").on("click", function () {
+                 //$("#kutu").slideToggle()
+                 $(".farkliKutu").slideUp()
+
+             })
+
+             $("input[type=button]:nth-child(3)").on("click", function () {
+                 //$("#kutu").slideToggle()
+                 $(".farkliKutu").slideDown()
+
+             })
+
+             $("input[type=button]:nth-child(4)").on("click", function () {
+                 //$("#kutu").slideToggle()
+                 $(".farkliKutu").fadeOut(3000)
+
+             })
+
+             $("input[type=button]:nth-child(5)").on("click", function () {
+                 //$("#kutu").slideToggle()
+                 $(".farkliKutu").fadeIn()
+
+             })
+
+             $("input[type=button]:nth-child(6)").on("click", function () {
+                 //$("#kutu").slideToggle()
+                 $(".farkliKutu").toggle()
+
+             })
+
+             $(".farkliKutu").css("float", "left")
+
+             $("div").addClass("class ismi")
+
+         })
+    </script>
+   
+</head>
+<body> <!--onload="test()"-->
+
+
+    <input type="button" value="SlideToogle"/>
+    <input type="button" value="SlideUp"/>
+    <input type="button" value="SlideDown"/>
+    <input type="button" value="FadeOut"/>
+    <input type="button" value="FadeIn"/>
+    <input type="button" value="Toogle"/>
+
+    <div id="kutu"></div>
+
+    <div class="farkliKutu">1</div>
+    <div class="farkliKutu">2</div>
+    <div class="farkliKutu">3</div>
+    <div class="farkliKutu">4</div>
+    <div class="farkliKutu">5</div>
+
+
+    
+</body>
+</html>

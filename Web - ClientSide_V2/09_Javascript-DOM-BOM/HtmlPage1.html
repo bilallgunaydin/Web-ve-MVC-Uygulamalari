@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+        #kutu {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            /*transition:all 0.8s ease-out;*/
+            /*transition: all 2s cubic-bezier(0, 1.74, 1,-0.56);*/
+            /*transition: all 2s  cubic-bezier(0, 1.41, 0, 0.07);*/
+            transition: all 2s cubic-bezier(0.36, 1.44, 0.55,-0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <input type="button" value="Tıkla" onclick="SaatGöster()"/>
+    <input type="button" value="Kare Al" onclick="alert(KareAl(5))"/>
+    <input type="button" value="Topla" onclick="alert(Topla(5,6))"/>
+    <input type="button" value="Topla" onclick="alert(Topla(5,6,8))" /><br /><!--Burada 2 aynı metot ismi olunca overload yapmaz. Yukarıdan aşağıya kodu okuduğu için son metot çalışır.-->
+    <input type="button" value="Kutuyu Gizle" onclick="KutuyuGizle()"/>
+    <input type="button" value="Kutuyu Göster" onclick="KutuyuGöster()" />
+    <input type="button" value="Kutuyu Kaydır" onclick="DiviKaydır()" />
+    <input type="button" value="Kutuyu Yaz" onclick="KutuYaz()" />
+    <div id="kutu">
+        <input type="button" value="Buton"/>
+    </div>
+
+    <hr />
+    
+    <button onclick="Kapat()">
+        Sekmeyi Kapat
+    </button>
+    <script>
+        //FUNCTIONS
+
+        /*
+        C#
+        
+        public int fonksiyonİsmi(int a)
+        {
+
+        return 56;
+        }
+        */
+
+        function SaatGöster(parametre) {
+
+            alert(new Date())
+        }
+
+        function KareAl(x) {
+            return x*x
+        }
+
+        function Topla(sayı1, sayı2) {
+            return sayı1+sayı2
+        }
+        function Topla(sayı1, sayı2, sayı3) {
+            return sayı1+sayı2+sayı3
+        }
+
+        //DOM( Document Object Model)
+
+        function KutuyuGizle() {
+            var element = document.getElementById("kutu")
+            //element.style.display="none"
+            element.style.opacity="0"
+        }
+
+        function KutuyuGöster() {
+            var element = document.getElementById("kutu")
+            //element.style.display = "block"
+            element.style.opacity = "1"
+            
+            //kutu.style.opacity="1"
+        }
+
+        function DiviKaydır() {
+            document.getElementById("kutu").style.marginLeft ="250px"
+        }
+        function KutuYaz() {
+            //document.getElementById("kutu").innerHTML = "<a href='http://google.com'>GOOGLE</a>"
+            //document.getElementById("kutu").innerHTML += "<a href='http://google.com'>GOOGLE</a>"
+
+            document.getElementById("kutu").innerHTML += "<br />" + (Math.floor(Math.random() * 100))
+            //İstediğimiz aralıkta random üretmek için= küçük sayı +(random * (büyük sayı - küçük sayı))
+        }
+
+
+        console.log("Consol'a yazı yazdık")
+        console.warn("Uyarı: Loglar içerisinde daha belirgin göstermek için: Başka kullanımları için ARAŞTIRIN")
+
+        var sayı = 123.456
+        console.log(Math.floor(sayı));
+        console.log(Math.ceil(sayı));
+        console.log(Math.round(sayı));
+        
+        console.log(Math.random())
+             document.writeln(deneme.toString())
+
+
+        //BOM ( Browser Object Model)
+        /*
+        Window
+        Screen
+        Location
+        History
+        Navigator
+        Popup Alert
+        Timing
+        Cookies
+        */
+
+        function Kapat() {
+            //window.close()
+            //alert(window.location.hostname)
+            //alert(window.location.pathname)
+            //alert(window.location)
+            //history.back
+            
+        }
+       
+    </script>
+</body>
+</html>
